@@ -1,4 +1,4 @@
-# 🚀 Laravel Blog API – AmiCode
+# 🚀 Laravel Blog API 
 
 <p align="center">
   <a href="https://laravel.com" target="_blank">
