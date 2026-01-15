@@ -131,5 +131,5 @@ Este proyecto está bajo la licencia **MIT**.
 ---
 
 ### ✨ Autor
-**AmiCode**  
+**Ing. Aminadad Feliciano**  
 Desarrollado con ❤️ usando Laravel
