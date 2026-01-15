@@ -25,7 +25,7 @@
 
 ## 📖 Descripción
 
-**Laravel Blog API – AmiCode** es una API RESTful construida con **Laravel** para la gestión completa de un blog.  
+**Laravel Blog API** es una API RESTful construida con **Laravel** para la gestión completa de un blog.  
 Incluye autenticación segura con **Laravel Sanctum**, manejo de usuarios, publicaciones con carga de imágenes, categorías y comentarios.
 
 ---
