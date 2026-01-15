@@ -7,53 +7,67 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Laravel
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+# 🚀 Laravel Blog API - AmiCode
 
-## Learning Laravel
+Esta es una API RESTful construida con **Laravel** para la gestión de un Blog. Incluye autenticación segura mediante **Laravel Sanctum**, gestión de usuarios, publicaciones (posts) con carga de imágenes, categorías y comentarios.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+## 🛠️ Requisitos
+* PHP 8.2+
+* Composer
+* MySQL / MariaDB
+* Laragon o XAMPP
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## 📦 Instalación
 
-## Laravel Sponsors
+1. **Clonar el repositorio:**
+   ```bash
+   git clone [https://github.com/tu-usuario/nombre-del-repo.git](https://github.com/tu-usuario/nombre-del-repo.git)
+   cd nombre-del-repo
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+   composer install
 
-### Premium Partners
+   ##Configurar el entorno:
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+Copia el archivo .env.example a .env.
 
-## Contributing
+Configura tu base de datos en el archivo .env.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
 
-## Code of Conduct
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+php artisan key:generate
 
-## Security Vulnerabilities
+##Migraciones y Link de Almacenamiento:
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
-## License
+php artisan migrate
+php artisan storage:link
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+##Iniciar el servidor:
+
+
+php artisan serve
+
+##📑 Endpoints de la API👤 
+##Usuarios y Auth
+Método,Endpoint,Descripción,Acceso
+POST,/api/login,Obtener token de acceso,Público
+POST,/api/users,Registrar un nuevo usuario,Público
+GET,/api/users,Listar todos los usuarios,Protegido
+POST,/api/logout,Revocar el token actual,Protegido
+
+##Nota: Para crear/actualizar posts con imágenes, usa form-data en lugar de JSON.
+Método,Endpoint,Descripción,Acceso
+GET,/api/posts,Listar todos los posts,Público
+POST,/api/posts,Crear un nuevo post (con imagen),Protegido
+GET,/api/posts/{id},Ver detalle de un post,Público
+PUT,/api/posts/{id},Actualizar un post,Protegido
+DELETE,/api/posts/{id},Eliminar un post,Protegido
+
+##Comentarios y Categorías
+
+Método,Endpoint,Descripción,Acceso
+GET,/api/posts/{id}/comments,Ver comentarios de un post,Público
+POST,/api/categories,Crear una categoría,Protegido
