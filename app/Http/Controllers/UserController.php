@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\WelcomeUserMail;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Http\Request;
@@ -28,7 +30,19 @@ class UserController extends Controller
         $user->name = $request->input('name');
         $user->email = $request->input('email');
         $user->password = bcrypt($request->input('password'));
-        $user->save();
+        
+        // --- ENVIAR CORREO AQUÍ ---
+        // Mail::to($user->email)->send(new WelcomeUserMail($user));
+        try {
+    $user->save();
+    Mail::to($user->email)->send(new WelcomeUserMail($user));
+} catch (\Exception $e) {
+    // Esto te dirá exactamente por qué falló el envío
+    return response()->json([
+        "error" => "Error al enviar correo",
+        "detalle" => $e->getMessage()
+    ], 500);
+}
         return response()->json($user, 201); 
         } catch (\Exception $e) {
             return response()->json(["message" => "Error creating user", "error" => $e->getMessage()], 500);
