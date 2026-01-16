@@ -31,12 +31,12 @@ return Application::configure(basePath: dirname(__DIR__))
         //
     })
     ->withExceptions(function (Exceptions $exceptions) {
-        // AÑADE ESTO: Fuerza a que los errores siempre sean JSON si se pide /api/*
-        $exceptions->shouldRenderJsonWhen(function (Request $request, Throwable $e) {
-            if ($request->is('api/*')) {
-                return true;
-            }
-
-            return $request->expectsJson();
-        });
-    })->create();
+    // Esto asegura que incluso los errores de validación o rutas no encontradas
+    // se devuelvan siempre como JSON si la URL empieza por /api/
+    $exceptions->shouldRenderJsonWhen(function (Request $request, Throwable $e) {
+        if ($request->is('api/*')) {
+            return true;
+        }
+        return $request->expectsJson();
+    });
+})->create();
